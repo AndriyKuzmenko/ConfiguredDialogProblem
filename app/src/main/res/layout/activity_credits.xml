@@ -27,6 +27,7 @@
             android:layout_height="0px"
             android:layout_weight="5"
             android:fontFamily="serif"
+            android:gravity="center"
             android:text="This app was made by Andriy Kuzmenko as homework for teacher Albert."
             android:textColor="#03031E"
             android:textSize="30sp"
