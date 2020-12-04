@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        adb.setPositiveButton("Copy", new DialogInterface.OnClickListener()
+        adb.setPositiveButton("OK", new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialog, int which)
