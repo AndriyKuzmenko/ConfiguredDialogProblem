@@ -30,6 +30,12 @@ public class MainActivity extends AppCompatActivity
         layout=(LinearLayout)findViewById(R.id.layout);
     }
 
+    /**
+     * This method runs when the first button is pressed
+     * it shows an AlertDialog with the option to change the screen colro to one out of 3.
+     * @param view
+     */
+
     public void button1Pressed(View view)
     {
         color=new int[]{0,0,0};
@@ -46,9 +52,24 @@ public class MainActivity extends AppCompatActivity
            }
         });
 
+        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
+            }
+        });
+
         AlertDialog ad=adb.create();
         ad.show();
     }
+
+    /**
+     * This method runs when the second button is pressed
+     * It shows an AlertDialog with the option to change the screen colro to one out of 3 color or any combination of them.
+     * @param view
+     */
 
     public void button2Pressed(View view)
     {
@@ -68,7 +89,24 @@ public class MainActivity extends AppCompatActivity
                 {
                     color[which]=0;
                 }
+            }
+        });
+
+        adb.setPositiveButton("Copy", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
                 layout.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+            }
+        });
+
+        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
             }
         });
 
@@ -76,11 +114,23 @@ public class MainActivity extends AppCompatActivity
         ad.show();
     }
 
+    /**
+     * This method runs when the third button is pressed
+     * It changes the screen color to white
+     * @param view
+     */
+
     public void button3Pressed(View view)
     {
         layout.setBackgroundColor(Color.WHITE);
     }
 
+    /**
+     * This method runs when the forth button is pressed
+     * It gets text from the user and shows a toast with this text.
+     * @param view
+     */
+    
     public void button4Pressed(View view)
     {
         adb=new AlertDialog.Builder(this);
@@ -88,6 +138,7 @@ public class MainActivity extends AppCompatActivity
         adb.setTitle("Alert Dialog");
         final EditText eT=new EditText(this);
         eT.setHint("Type tetx here");
+        adb.setView(eT);
 
         adb.setPositiveButton("Copy", new DialogInterface.OnClickListener()
         {
@@ -112,6 +163,11 @@ public class MainActivity extends AppCompatActivity
         ad.show();
     }
 
+    /**
+     * @param menu  the menu of this activity
+     * @return      shows a menu with one option - credits
+     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -119,6 +175,11 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+    /**
+     * @param item   The item that was selected
+     * @return       Goes to credits activity. Since there's only one item, there's no need to check which one was pressed.
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
