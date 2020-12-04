@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity
     {
         adb=new AlertDialog.Builder(this);
 
+        color=new int[]{0,0,0};
         adb.setTitle("Alrt Dialog");
         adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener()
         {
