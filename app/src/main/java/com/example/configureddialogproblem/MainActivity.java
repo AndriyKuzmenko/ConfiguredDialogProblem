@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         color=new int[]{0,0,0};
         adb=new AlertDialog.Builder(this);
 
-        adb.setTitle("Alrt Dialog 1");
+        adb.setTitle("Alrt Dialog");
         adb.setItems(colors, new DialogInterface.OnClickListener()
         {
            @Override
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity
     {
         adb=new AlertDialog.Builder(this);
 
-        adb.setTitle("Alrt Dialog 1");
+        adb.setTitle("Alrt Dialog");
         adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener()
         {
             @Override
@@ -78,6 +80,32 @@ public class MainActivity extends AppCompatActivity
 
     public void button4Pressed(View view)
     {
+        adb=new AlertDialog.Builder(this);
+        adb.setCancelable(false);
+        adb.setTitle("Alert Dialog");
+        final EditText eT=new EditText(this);
+        eT.setHint("Type tetx here");
+        
+        adb.setPositiveButton("Copy", new DialogInterface.OnClickListener() 
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) 
+            {
+                String s=eT.getText().toString();
+                Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        adb.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
+            }
+        });
+        
+        AlertDialog ad=adb.create();
+        ad.show();
     }
 }
