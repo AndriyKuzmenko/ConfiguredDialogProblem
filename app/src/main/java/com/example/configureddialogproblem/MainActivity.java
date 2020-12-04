@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
     public void button3Pressed(View view)
     {
-
+        layout.setBackgroundColor(Color.WHITE);
     }
 
     public void button4Pressed(View view)
