@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity
 {
     AlertDialog.Builder adb;
     final String[] colors={"Red","Green","Blue"};
-    int[] color;
+    int[] color={0,0,0};
     LinearLayout layout;
 
     @Override
@@ -43,5 +43,41 @@ public class MainActivity extends AppCompatActivity
 
         AlertDialog ad=adb.create();
         ad.show();
+    }
+
+    public void button2Pressed(View view)
+    {
+        adb=new AlertDialog.Builder(this);
+
+        adb.setTitle("Alrt Dialog 1");
+        adb.setMultiChoiceItems(colors, null, new DialogInterface.OnMultiChoiceClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked)
+            {
+                if (isChecked)
+                {
+                    color[which]=255;
+                }
+                else
+                {
+                    color[which]=0;
+                }
+                layout.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+            }
+        });
+
+        AlertDialog ad=adb.create();
+        ad.show();
+    }
+
+    public void button3Pressed(View view)
+    {
+
+    }
+
+    public void button4Pressed(View view)
+    {
+
     }
 }
